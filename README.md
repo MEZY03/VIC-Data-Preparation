@@ -28,7 +28,7 @@
 
 您可以通过以下命令安装主要Python依赖项：
 ```
-conda install numpy pandas scipy xarray matplotlib gdal libgdal-hdf4 geopandas shapely rasterstats netcdf4 h5netcdf
+conda install numpy pandas scipy xarray matplotlib gdal libgdal-hdf4 geopandas shapely rasterstats netcdf4 h5netcdf -c conda-forge
 ```
 
 辅组工具：CDO、NCO
