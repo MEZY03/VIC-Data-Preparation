@@ -1,7 +1,7 @@
 ## Project Introduction
 This repository provides a set of Python script tools for preparing input data for the **VIC (Variable Infiltration Capacity)** hydrological model. The project aims to automate the entire process from raw data downloading to generating VIC-recognized parameter files, helping researchers quickly set up VIC model experimental environments.
 
-For **complete detailed tutorials**, data processing principles, and important notes about the project, please refer to my CSDN blog post: [Complete Tutorial on VIC Model Input Data Preparation](https://).
+For **complete detailed tutorials**, data processing principles, and important notes about the project, please refer to my CSDN blog post: [Complete Tutorial on VIC Model Input Data Preparation](https://blog.csdn.net/ME1010/article/details/155427228).
 
 ## Key Preparation Steps
 1. Grid Creation: Generate simulation grid systems based on the study area Shapefile (grid_coordinates.csv).
@@ -14,7 +14,7 @@ For **complete detailed tutorials**, data processing principles, and important n
 
 5. Vegetation Parameters: Calculate vegetation type proportions based on MODIS land cover data (MCD12Q1) and generate veg_param.txt.
 
-6. Meteorological Forcing Data: Interpolate hourly meteorological data (e.g., MERRA-2) to grid points, generating forcing_[lat]_[lon].txt files for each grid.
+6. Meteorological Forcing Data: Interpolate hourly meteorological data (e.g., MERRA-2) to grid points, generating forcing_[lat]_[lon] files for each grid.
 
 7. One-click Run Script:
 ```
@@ -28,6 +28,7 @@ You can install the main Python dependencies using the following command:
 ```
 conda install numpy pandas scipy xarray matplotlib gdal libgdal-hdf4 geopandas shapely rasterstats netcdf4 h5netcdf -c conda-forge
 ```
+
 Auxiliary Tools: CDO, NCO
 
 ## Official VIC Resources
