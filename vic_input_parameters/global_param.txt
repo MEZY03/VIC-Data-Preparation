@@ -1,0 +1,78 @@
+# VIC Global Parameter File for Lower Yangtze River Basin Simulation
+# Created based on FindleyLake example, adapted for Lower Yangtze River Basin 2024 simulation
+
+# 时间步长设置
+NLAYER        3                    # 土壤层数, 即soil_param.txt中的层数
+NODES         3                    # 土壤热力学节点数
+MODEL_STEPS_PER_DAY    24
+SNOW_STEPS_PER_DAY     24
+RUNOFF_STEPS_PER_DAY   24
+
+# 模拟时段
+STARTYEAR    2024
+STARTMONTH   1
+STARTDAY     1
+ENDYEAR      2024
+ENDMONTH     1
+ENDDAY       1
+
+# 物理过程选项
+FULL_ENERGY   TRUE
+FROZEN_SOIL   FALSE
+AERO_RESIST_CANSNOW AR_406
+
+# 驱动数据设置
+FORCING1     /share/home/veiga/classic1_old/forcings/forcing_
+FORCE_FORMAT  ASCII
+FORCE_TYPE    AIR_TEMP temp
+FORCE_TYPE    PREC     prec
+FORCE_TYPE    PRESSURE air_pressure
+FORCE_TYPE    SWDOWN   shortwave
+FORCE_TYPE    LWDOWN   longwave
+FORCE_TYPE    VP       vapor_pressure
+FORCE_TYPE    WIND     wind
+FORCE_STEPS_PER_DAY 24
+FORCEYEAR     2024
+FORCEMONTH    1
+FORCEDAY      1
+GRID_DECIMAL  6
+WIND_H        10.0
+
+# 参数文件路径
+SOIL          /share/home/veiga/classic1_old/soil_param.txt
+VEGLIB       /share/home/veiga/classic1_old/veg_lib_IGBP.txt
+VEGPARAM      /share/home/veiga/classic1_old/veg_param.txt
+
+# 植被参数设置
+ROOT_ZONES    3                    # 根系分区数, 与veg_param.txt中的根区定义一致
+VEGLIB_FCAN   FALSE
+VEGPARAM_LAI  TRUE
+VEGPARAM_FCAN FALSE
+VEGPARAM_ALB  TRUE
+LAI_SRC       FROM_VEGPARAM
+FCAN_SRC      FROM_DEFAULT
+ALB_SRC       FROM_VEGPARAM
+
+# 网格设置
+EQUAL_AREA    FALSE
+RESOLUTION    0.1
+SNOW_BAND     1
+
+# 输出设置
+RESULT_DIR    /share/home/veiga/classic1_old/output/
+OUTFILE       fluxes
+COMPRESS      FALSE
+OUT_FORMAT    ASCII
+AGGFREQ       NDAYS 1
+
+# 输出变量 - 选择典型水文变量
+OUTVAR        OUT_PREC
+OUTVAR        OUT_EVAP
+OUTVAR        OUT_RUNOFF
+OUTVAR        OUT_BASEFLOW
+OUTVAR        OUT_SWE
+OUTVAR        OUT_SOIL_MOIST
+OUTVAR        OUT_SOIL_TEMP
+OUTVAR        OUT_AIR_TEMP
+OUTVAR        OUT_SENSIBLE
+OUTVAR        OUT_LATENT

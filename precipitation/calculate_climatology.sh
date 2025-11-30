@@ -1,0 +1,2 @@
+# CDO计算气候态降水
+cdo --reduce_dim -setattribute,PRECTOT@units="mm/year" -expr,'PRECTOT = PRECTOT * 86400 *365' -timavg -mergetime MERRA/MERRA2_*.tavgM_2d_flx_Nx.*.nc4.nc4 precipitation_data/precip_climatology.nc
