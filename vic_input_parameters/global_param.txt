@@ -1,12 +1,15 @@
 # VIC Global Parameter File for Lower Yangtze River Basin Simulation
 # Created based on FindleyLake example, adapted for Lower Yangtze River Basin 2024 simulation
+# Notice: xxx should be replaced with your user name, or you can choose other specified path
+# You can also link the vic_classic.exe to other directory other than default installation directory
+# Run VIC simulation: ./vic_classic.exe -g global_param.txt
 
 # 时间步长设置
 NLAYER        3                    # 土壤层数, 即soil_param.txt中的层数
 NODES         3                    # 土壤热力学节点数
 MODEL_STEPS_PER_DAY    24
 SNOW_STEPS_PER_DAY     24
-RUNOFF_STEPS_PER_DAY   24
+RUNOFF_STEPS_PER_DAY  24
 
 # 模拟时段
 STARTYEAR    2024
@@ -22,7 +25,7 @@ FROZEN_SOIL   FALSE
 AERO_RESIST_CANSNOW AR_406
 
 # 驱动数据设置
-FORCING1     /share/home/veiga/classic1_old/forcings/forcing_
+FORCING1     /home/xxx/VIC-5.1.0/vic/drivers/classic/forcings/forcing_
 FORCE_FORMAT  ASCII
 FORCE_TYPE    AIR_TEMP temp
 FORCE_TYPE    PREC     prec
@@ -39,9 +42,9 @@ GRID_DECIMAL  6
 WIND_H        10.0
 
 # 参数文件路径
-SOIL          /share/home/veiga/classic1_old/soil_param.txt
-VEGLIB       /share/home/veiga/classic1_old/veg_lib_IGBP.txt
-VEGPARAM      /share/home/veiga/classic1_old/veg_param.txt
+SOIL          /home/xxx/VIC-5.1.0/vic/drivers/classic/soil_param.txt
+VEGLIB      /home/xxx/VIC-5.1.0/vic/drivers/classic/veg_lib_IGBP.txt
+VEGPARAM      /home/xxx/VIC-5.1.0/vic/drivers/classic/veg_param.txt
 
 # 植被参数设置
 ROOT_ZONES    3                    # 根系分区数, 与veg_param.txt中的根区定义一致
@@ -59,7 +62,7 @@ RESOLUTION    0.1
 SNOW_BAND     1
 
 # 输出设置
-RESULT_DIR    /share/home/veiga/classic1_old/output/
+RESULT_DIR    /home/xxx/VIC-5.1.0/vic/drivers/classic/output/
 OUTFILE       fluxes
 COMPRESS      FALSE
 OUT_FORMAT    ASCII
