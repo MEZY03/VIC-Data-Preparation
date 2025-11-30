@@ -34,7 +34,7 @@ conda install numpy pandas scipy xarray matplotlib gdal libgdal-hdf4 geopandas s
 辅组工具：CDO、NCO
 
 ## 官方VIC资源
-[VIC官方文档](https://github.com/UW-Hydro/VIC)
+[VIC官方文档](https://vic.readthedocs.io/en/master/)
 
 [VIC官方GitHub仓库](https://github.com/UW-Hydro/VIC)
 
