@@ -26,7 +26,7 @@ Core Python Libraries: Python 3.11+ Standard Libraries
 
 You can install the main Python dependencies using the following command:
 ```
-conda install numpy pandas scipy xarray matplotlib gdal libgdal-hdf4 geopandas shapely rasterstats netcdf4 h5netcdf
+conda install numpy pandas scipy xarray matplotlib gdal libgdal-hdf4 geopandas shapely rasterstats netcdf4 h5netcdf -c conda-forge
 ```
 Auxiliary Tools: CDO, NCO
 
