@@ -1,7 +1,7 @@
 # VIC Global Parameter File for Lower Yangtze River Basin Simulation
 # Created based on FindleyLake example, adapted for Lower Yangtze River Basin 2024 simulation
 # Notice: xxx should be replaced with your user name, or you can choose other specified path
-# You can also link the vic_classic.exe to other directory other than default installation directory
+# You can also link the vic_classic.exe to other directories than default installation directory
 # Run VIC simulation: ./vic_classic.exe -g global_param.txt
 
 # 时间步长设置
