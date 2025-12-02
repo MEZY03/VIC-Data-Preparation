@@ -147,7 +147,9 @@ class VICForcingGenerator:
 		return data
 	
 	def process_temperature_data(self) -> bool:
-		"""处理气温数据"""
+		"""
+		处理气温数据
+		"""
 		if 'temperature' not in self.datasets:
 			return False
 			
@@ -167,7 +169,9 @@ class VICForcingGenerator:
 		return True
 	
 	def process_precipitation_data(self) -> bool:
-		"""处理降水数据"""
+		"""
+		处理降水数据
+		"""
 		if 'precipitation' not in self.datasets:
 			return False
 			
@@ -187,7 +191,9 @@ class VICForcingGenerator:
 		return True
 	
 	def process_pressure_data(self) -> bool:
-		"""处理气压数据"""
+		"""
+		处理气压数据
+		"""
 		if 'pressure' not in self.datasets:
 			return False
 			
@@ -207,7 +213,9 @@ class VICForcingGenerator:
 		return True
 	
 	def process_shortwave_radiation(self) -> bool:
-		"""处理短波辐射数据"""
+		"""
+		处理短波辐射数据
+		"""
 		if 'shortwave' not in self.datasets:
 			return False
 			
@@ -227,7 +235,9 @@ class VICForcingGenerator:
 		return True
 	
 	def process_longwave_radiation(self) -> bool:
-		"""处理长波辐射数据"""
+		"""
+		处理长波辐射数据
+		"""
 		# 优先使用观测的长波辐射
 		if ('longwave' in self.datasets and 
 			self.config.get('longwave_var') and 
@@ -269,7 +279,9 @@ class VICForcingGenerator:
 		return False
 	
 	def process_humidity_data(self) -> bool:
-		"""处理湿度数据并计算水汽压"""
+		"""
+		处理湿度数据并计算水汽压
+		"""
 		if 'humidity' not in self.datasets or 'PRESSURE' not in self.vic_variables:
 			return False
 			
@@ -295,7 +307,9 @@ class VICForcingGenerator:
 		return True
 	
 	def process_wind_data(self) -> bool:
-		"""处理风速数据"""
+		"""
+		处理风速数据
+		"""
 		if 'wind' not in self.datasets:
 			return False
 			
@@ -377,7 +391,9 @@ class VICForcingGenerator:
 		return file_count > 0
 	
 	def close_datasets(self):
-		"""关闭所有打开的数据集"""
+		"""
+		关闭所有打开的数据集
+		"""
 		for name, dataset in self.datasets.items():
 			try:
 				dataset.close()
@@ -386,7 +402,7 @@ class VICForcingGenerator:
 	
 	def load_meteorological_data(self) -> bool:
 		"""
-		加载气象强迫数据 - 基于您提出的算法
+		加载气象强迫数据 - 基于以下算法
 		1. 按小时 (忽略分钟)读取各变量的时间, 找出共同小时范围, 以及时间步长
 		2. 将各变量的起始小时与共同起始小时进行比较, 计算时间偏移
 		"""
@@ -527,7 +543,9 @@ class VICForcingGenerator:
 			return False
 	
 	def _generate_grid_metadata_file(self, output_dir: str):
-		"""生成网格信息元数据文件"""
+		"""
+		生成网格信息元数据文件
+		"""
 		metadata_filepath = os.path.join(output_dir, "vic_forcing_info.txt")
 		
 		try:
