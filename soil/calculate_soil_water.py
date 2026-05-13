@@ -16,7 +16,7 @@ def calculate_soil_water_characteristic(Sand, Clay, OrganicMatter, Salinity=0, G
 	Clay: 粘粒含量，质量百分比 (0.1-99.9)
 	OrganicMatter: 有机质含量，质量百分比 (0.1-20)
 	Salinity: 盐度 (dS/m)，默认值为 0
-	Gravel: 砾石含量，体积百分比 (0-80)，默认值为 0
+	Gravel: 砾石含量，质量百分比 (0-80)，默认值为 0
 	Compaction: 压实因子 (0.9-1.3)，默认值为 1.0
 	
 	返回:
@@ -27,7 +27,7 @@ def calculate_soil_water_characteristic(Sand, Clay, OrganicMatter, Salinity=0, G
 	S = np.clip(Sand, 0.1, 99.9) / 100.0   # 转换为小数
 	C = np.clip(Clay, 0.1, 99.9) / 100.0   # 转换为小数
 	OM = np.clip(OrganicMatter, 0.1, 20)   # 保持为百分比
-	R_v = np.clip(Gravel, 0, 80) / 100.0   # 转换为小数
+	R_w = np.clip(Gravel, 0, 80) / 100.0   # 转换为小数
 	DF = np.clip(Compaction, 0.9, 1.3)     # 压实因子
 
 	# 1. 计算基本水分特征参数 (方程1-5)
@@ -81,7 +81,7 @@ def calculate_soil_water_characteristic(Sand, Clay, OrganicMatter, Salinity=0, G
 
 	# 5. 应用砾石校正 (方程19-22)
 	alpha = bulk_density_DF / 2.65  # α = ρ_DF / 2.65
-	R_w = R_v/(R_v * (1 - alpha) + alpha) # 方程19变形
+	R_v = (alpha * R_w) / (1 - R_w * (1 - alpha))
 
 	# 砾石校正后的容重 (方程20)
 	bulk_density_gravel = bulk_density_DF * (1 - R_v) + (R_v * 2.65)  # g/cm³
@@ -221,7 +221,7 @@ def process_soil_water_characteristic(input_file, output_file, default_BD=None, 
 
 	# 6. 输出统计信息
 	print("\n=== 土壤参数统计 ===")
-	key_parameters = ['wilting_point', 'field_capacity', 'saturation', 'available_water', 'sat_hydraulic_cond']
+	key_parameters = ['wilting_point', 'field_capacity', 'saturation', 'available_water', 'sat_hydraulic_cond', 'matric_bulk_density']
 	for col in key_parameters:
 		if col in soil_water_df.columns:
 			valid_data = soil_water_df[col].dropna()
@@ -250,7 +250,6 @@ if __name__ == "__main__":
 	
 	# 显示前几个网格的土壤水力参数
 	print(f"\n前5个网格的土壤水力参数:")
-	display_columns = ['grid_id', 'lon_center', 'lat_center', 
-					  'wilting_point', 'field_capacity', 'saturation', 'sat_hydraulic_cond']
+	display_columns = ['grid_id', 'lon_center', 'lat_center', 'wilting_point', 'field_capacity', 'saturation', 'available_water', 'sat_hydraulic_cond', 'matric_bulk_density']
 	available_columns = [col for col in display_columns if col in soil_water_df.columns]
 	print(soil_water_df[available_columns].head(5).to_string(index=False))
